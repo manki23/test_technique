@@ -27,3 +27,84 @@ laravel new
 ```
 ### Configuration
 ...
+## Basics
+To start the server :
+``` bash
+php artisan serve
+```
+## Howto
+### create model and migration:
+``` bash
+php artisan make:model Article -m
+```
+
+  __It creates two files:__  
+    1. ```./app/Articles.php```  
+    2. ```./database/migrations/2020_04_18_204521_create_articles_table.php```  
+ ``` php
+      public function up()
+    {
+        Schema::create('articles', function (Blueprint $table) {
+            $table->id();
+            $table->string('title', 255)->unique();
+            $table->string('author', 255);
+            $table->date('date');
+            $table->text('content')->unique();
+            $table->text('image');
+            $table->timestamps();
+        });
+    }
+```
+### create seeder & factory tasks:
+*A seeder is used to fill a database table.*
+``` bash
+php artisan make:seeder ArticleTableSeeder
+```
+__It creates one file:__ ```./database/seeds/ArticleTableSeeder.php```
+that we fill like this:
+```php
+public function run()
+    {
+        factory(Article::class, 10)->create();
+    }
+```
+Then do:
+``` bash
+php artisan make:factory ArticleFactory --model=Article
+```
+__It creates one file:__ ```./database/factories/ArticleFactory.php```
+And fill it with:
+```php
+$factory->define(Article::class, function (Faker $faker) {
+    return [
+        'title' => $faker->sentence(rand(5, 21), $asText = false),
+        'author' => $faker->name(),
+        'date' => $faker->unixTime(),
+        'content' => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
+        'image' => $faker->imageUrl($width = 640, $height = 480),
+    ];
+});
+
+```
+And in ***./database/seeds/DatabaseSeeder.php*** add:
+``` php
+public function run()
+    {
+        $this->call(ArticleTableSeeder::class);
+    }
+```
+### set env:
+In ```./.env```:
+``` php
+DB_DATABASE=myapi
+DB_USERNAME=root
+DB_PASSWORD=
+```
+### launch migration and population:
+``` bash
+php artisan migrate --seed
+```
+***
+## Useful links
+- https://laravel.com/docs/4.2/installation
+- https://laravel.sillo.org/une-api-avec-laravel-6/
