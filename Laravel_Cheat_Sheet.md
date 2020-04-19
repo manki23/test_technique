@@ -1,4 +1,5 @@
 # Laravel Cheat Sheet
+*Server side*
 ## Table of Contents
 1. [Laravel Installation](#LaravelInstallation)  
     - [Install Composer](#InstallComposer)
@@ -24,7 +25,7 @@ mv composer.phar /usr/local/bin/composer
 ### Install Laravel <a name="InstallLaravel"></a>
 ``` bash
 composer global require "laravel/installer=~1.1"
-PATH="/Users/myriam/.composer/vendor/bin:$PATH"
+export PATH="/Users/myriam/.composer/vendor/bin:$PATH"
 ```
 to fix ***RuntimeException The Zip PHP extension is not installed***
 ``` bash
@@ -36,7 +37,8 @@ brew link php@7.3 --force
 finally do :
 ``` bash
 composer global update
-laravel new
+laravel new Server
+cd Server
 ```
 ## Basics <a name="Basics"></a>
 To start the server:  
