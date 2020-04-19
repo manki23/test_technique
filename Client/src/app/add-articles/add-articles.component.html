@@ -1,1 +1,57 @@
-<p>add-articles works!</p>
+<div class="example-container mat-elevation-z8">
+    <h2>Add Article</h2>
+    <div class="example-loading-shade"
+          *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <div class="button-row">
+      <a mat-flat-button color="primary" [routerLink]="['/articles']"><mat-icon>list</mat-icon></a>
+    </div>
+    <mat-card class="example-card">
+      <form [formGroup]="articlesForm" (ngSubmit)="onFormSubmit()">
+        <mat-form-field class="example-full-width">
+          <mat-label>Title</mat-label>
+          <input matInput placeholder="Title" formControlName="title"
+                  [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!articlesForm.get('title').valid && articlesForm.get('title').touched">Please enter Title</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Author</mat-label>
+            <input matInput placeholder="Author" formControlName="author"
+                    [errorStateMatcher]="matcher">
+            <mat-error>
+              <span *ngIf="!articlesForm.get('author').valid && articlesForm.get('author').touched">Please enter Full Name</span>
+            </mat-error>
+          </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Date</mat-label>
+          <input matInput type="date" placeholder="Date" formControlName="date"
+                  [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!articlesForm.get('date').valid && articlesForm.get('date').touched">Please enter Date</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Content</mat-label>
+          <input matInput placeholder="Content" formControlName="content"
+                  [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!articlesForm.get('content').valid && articlesForm.get('content').touched">Please enter Content</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Image</mat-label>
+          <input matInput placeholder="Image URL" formControlName="image"
+                  [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!articlesForm.get('image').valid && articlesForm.get('image').touched">Please enter Image URL</span>
+          </mat-error>
+        </mat-form-field>
+        <div class="button-row">
+          <button type="submit" [disabled]="!articlesForm.valid" mat-flat-button color="primary"><mat-icon>save</mat-icon></button>
+        </div>
+      </form>
+    </mat-card>
+  </div>

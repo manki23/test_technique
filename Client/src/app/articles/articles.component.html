@@ -7,9 +7,25 @@
     <div class="button-row">
       <a mat-flat-button color="primary" [routerLink]="['/add-articles']"><mat-icon>add</mat-icon> Articles</a>
     </div>
+    <mat-card *ngFor="let article of articles" style="margin-top:10px;">
+      <mat-card-header>
+          <mat-card-title>{{article.title}}</mat-card-title>
+          <mat-card-subtitle>
+            {{article.author}} on {{article.date}}
+          </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+          <p>
+              {{article.content}}
+          </p>
+          <img style="height:100%; width: 100%;" src={{article.image}} />
+      </mat-card-content>
+      <mat-card-actions>
+    <button mat-button>Read more</button>
+  </mat-card-actions>
+  </mat-card>
     <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="data" class="example-table"
-             matSort matSortActive="name" matSortDisableClear matSortDirection="asc">
+      <table mat-table [dataSource]="data" class="example-table">
   
         <!-- Articles Title Column -->
         <ng-container matColumnDef="title">
@@ -23,10 +39,22 @@
           <td mat-cell *matCellDef="let row">{{row.author}}</td>
         </ng-container>
   
+        <!-- Articles Date Column -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let row">{{row.date}}</td>
+        </ng-container>
+
         <!-- Article Content Column -->
         <ng-container matColumnDef="content">
           <th mat-header-cell *matHeaderCellDef>Content</th>
           <td mat-cell *matCellDef="let row">{{row.content}}</td>
+        </ng-container>
+
+        <!-- Articles Image Column -->
+        <ng-container matColumnDef="image">
+          <th mat-header-cell *matHeaderCellDef>Image</th>
+          <td mat-cell *matCellDef="let row"><img src="{{row.image}}" alt="{{row.image}}" /></td>
         </ng-container>
   
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
