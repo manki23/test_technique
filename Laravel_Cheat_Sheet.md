@@ -2,9 +2,16 @@
 ## Table of Contents
 1. [Laravel Installation](#LaravelInstallation)  
     - [Install Composer](#InstallComposer)
+    - [Install Laravel](#InstallLaravel)
 2. [Basics](#Basics)
 3. [Howto](#Howto)
+    - [create model and migration](#create_model_and_migration)
+    - [create seeder & factory tasks](#create_seeder_&_factory_tasks)
+    - [launch migration and population](#launch_migration_and_population)
+    - [create a controller](#create_a_controller)
+    - [create an API resource](#create_an_API_resource)
 4. [Useful links](#Usefullinks)
+***
 ## Laravel Installation <a name="LaravelInstallation"></a>
 ### Install Composer <a name="InstallComposer"></a>
 ``` sh
