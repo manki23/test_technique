@@ -1,6 +1,12 @@
 # Laravel Cheat Sheet
-## Laravel Installation
-### Install Composer
+## Table of Contents
+1. [Laravel Installation](#LaravelInstallation)  
+    - [Install Composer](#InstallComposer)
+2. [Basics](#Basics)
+3. [Howto](#Howto)
+4. [Useful links](#Usefullinks)
+## Laravel Installation <a name="LaravelInstallation"></a>
+### Install Composer <a name="InstallComposer"></a>
 ``` sh
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
@@ -8,7 +14,7 @@ php composer-setup.php
 php -r "unlink('composer-setup.php');"
 mv composer.phar /usr/local/bin/composer
 ```
-### Install Laravel
+### Install Laravel <a name="InstallLaravel"></a>
 ``` bash
 composer global require "laravel/installer=~1.1"
 PATH="/Users/myriam/.composer/vendor/bin:$PATH"
@@ -25,9 +31,7 @@ finally do :
 composer global update
 laravel new
 ```
-### Configuration
-...
-## Basics
+## Basics <a name="Basics"></a>
 To start the server:  
 ``` bash
 php artisan serve
@@ -36,8 +40,8 @@ To list all routes:
 ``` bash
 php artisan route:list
 ```
-## Howto
-### create model and migration:
+## Howto <a name="Howto"></a>
+### create model and migration: <a name="create_model_and_migration"></a>
 ``` bash
 php artisan make:model Article -m
 ```
@@ -58,7 +62,7 @@ php artisan make:model Article -m
         });
     }
 ```
-### create seeder & factory tasks:
+### create seeder & factory tasks: <a name="create_seeder_&_factory_tasks"></a>
 *A seeder is used to fill a database table.*
 ``` bash
 php artisan make:seeder ArticleTableSeeder
@@ -96,7 +100,7 @@ public function run()
         $this->call(ArticleTableSeeder::class);
     }
 ```
-### launch migration and population:
+### launch migration and population: <a name="launch_migration_and_population"></a>
 Step to do the first time :  
 - change ```.env``` like this:
   ```
@@ -115,7 +119,7 @@ php artisan config:cache
 php artisan cache:clear 
 php artisan migrate --seed
 ```
-### create a controller:
+### create a controller: <a name="create_a_controller"></a>
 ``` bash
 php artisan make:controller ArticleController --api --model=Article
 ```
@@ -126,14 +130,14 @@ Add its routes in ```./routes/api.php``` with:
 Route::apiResource('articles', 'ArticleController');
 ```
 Use ``` php artisan route:list ``` to list all routes.  
-### create an API resource:
+### create an API resource: <a name="create_an_API_resource"></a>
 ``` php
 php artisan make:resource Article
 ```
 __It creates one file:__ ```./Http/Resources/Article.php```
 ***
 The API is NOT secure with user authentification.
-## Useful links
+## Useful links <a name="Usefullinks"></a>
 - https://laravel.com/docs/4.2/installation
 - https://laravel.sillo.org/une-api-avec-laravel-6/
 - https://github.com/fzaninotto/Faker
