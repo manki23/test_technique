@@ -1,4 +1,4 @@
-# Cheat Sheet
+# Laravel Cheat Sheet
 ## Laravel Installation
 ### Install Composer
 ``` sh
@@ -126,7 +126,13 @@ Add its routes in ```./routes/api.php``` with:
 Route::apiResource('articles', 'ArticleController');
 ```
 Use ``` php artisan route:list ``` to list all routes.  
+### create an API resource:
+``` php
+php artisan make:resource Article
+```
+__It creates one file:__ ```./Http/Resources/Article.php```
 ***
+The API is NOT secure with user authentification.
 ## Useful links
 - https://laravel.com/docs/4.2/installation
 - https://laravel.sillo.org/une-api-avec-laravel-6/
