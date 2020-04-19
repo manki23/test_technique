@@ -28,9 +28,13 @@ laravel new
 ### Configuration
 ...
 ## Basics
-To start the server :
+To start the server:  
 ``` bash
 php artisan serve
+```
+To list all routes:  
+``` bash
+php artisan route:list
 ```
 ## Howto
 ### create model and migration:
@@ -48,10 +52,9 @@ php artisan make:model Article -m
             $table->id();
             $table->string('title', 255)->unique();
             $table->string('author', 255);
-            $table->date('date');
-            $table->text('content')->unique();
+            $table->timestamp('date');
+            $table->text('content');
             $table->text('image');
-            $table->timestamps();
         });
     }
 ```
@@ -79,7 +82,7 @@ $factory->define(Article::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence(rand(5, 21), $asText = false),
         'author' => $faker->name(),
-        'date' => $faker->unixTime(),
+        'date' => $faker->dateTimeBetween('-10 years', 'now', null),
         'content' => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
         'image' => $faker->imageUrl($width = 640, $height = 480),
     ];
@@ -93,18 +96,38 @@ public function run()
         $this->call(ArticleTableSeeder::class);
     }
 ```
-### set env:
-In ```./.env```:
-``` php
-DB_DATABASE=myapi
-DB_USERNAME=root
-DB_PASSWORD=
-```
 ### launch migration and population:
+Step to do the first time :  
+- change ```.env``` like this:
+  ```
+  DB_CONNECTION=mysql
+  DB_HOST=localhost
+  DB_PORT=8889
+  DB_DATABASE=blog
+  DB_USERNAME=root
+  DB_PASSWORD='root'
+  DB_SOCKET=/Applications/MAMP/tmp/mysql/mysql.sock
+  ```
+- launch mamp server
+- create ```blog``` database on *phpmyadmin*
 ``` bash
+php artisan config:cache 
+php artisan cache:clear 
 php artisan migrate --seed
 ```
+### create a controller:
+``` bash
+php artisan make:controller ArticleController --api --model=Article
+```
+NB: *Using the --api option excludes the create and edit methods.*  
+__It creates one file:__ ```./Http/Controllers/ArticleController.php```
+Add its routes in ```./routes/api.php``` with:
+``` php
+Route::apiResource('articles', 'ArticleController');
+```
+Use ``` php artisan route:list ``` to list all routes.  
 ***
 ## Useful links
 - https://laravel.com/docs/4.2/installation
 - https://laravel.sillo.org/une-api-avec-laravel-6/
+- https://github.com/fzaninotto/Faker
