@@ -3,30 +3,18 @@
          *ngIf="isLoadingResults">
       <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
     </div>
-    <p>
-      Work still in progress...
-    </p>
-    <a href="/articles">Go back</a>
-    <!--
-    <mat-card class="example-card">
-      <mat-card-header>
-        <mat-card-title><h2>{{articles.title}}</h2></mat-card-title>
-        <mat-card-subtitle> {{articles.date}}</mat-card-subtitle>
-      </mat-card-header>
+    <mat-card style="margin-top:10px;" class="article_details">
+      <mat-card-header> 
+          <mat-card-title class="title">{{articles.title}}</mat-card-title>
+          <mat-card-subtitle class="subtitle">
+            {{articles.author}} on {{articles.date}}
+          </mat-card-subtitle>
+        </mat-card-header>
       <mat-card-content>
-        <dl>
-          <dt>Author:</dt>
-          <dd>{{articles.author}}</dd>
-          <dt>Content:</dt>
-          <dd>{{articles.content}}</dd>
-          <dt>Image:</dt>
-          <dd>{{articles.image}}</dd>
-        </dl>
+        <img style="height:100%; width: 100%;" src={{articles.image}} />
+          <p class="content">
+              {{articles.content}}
+          </p>
       </mat-card-content>
-      <mat-card-actions>
-        <a mat-flat-button color="primary" [routerLink]="['/edit-articles', articles._id]"><mat-icon>edit</mat-icon> Articles</a>
-        <a mat-flat-button color="warn" (click)="deleteArticles(articles._id)"><mat-icon>delete</mat-icon> Articles</a>
-      </mat-card-actions>
-    </mat-card>
-  -->
+  </mat-card>
   </div>

@@ -9,7 +9,7 @@ import { Articles } from '../articles';
 })
 export class ArticlesComponent implements OnInit {
 
-  displayedColumns: string[] = ['title', 'author', 'date', 'content', 'image'];
+  displayedColumns: string[] = ['title', 'author', 'date', 'image', 'content'];
   data: Articles[] = [];
   isLoadingResults = true;
 
