@@ -1,12 +1,11 @@
 <div class="example-container mat-elevation-z8">
-    <h2>Add Article</h2>
     <div class="example-loading-shade"
           *ngIf="isLoadingResults">
       <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
     </div>
-    <div class="button-row">
-      <a mat-flat-button color="primary" [routerLink]="['/articles']"><mat-icon>list</mat-icon></a>
-    </div>
+    <p>
+      Work still in progress...
+    </p>
     <mat-card class="example-card">
       <form [formGroup]="articlesForm" (ngSubmit)="onFormSubmit()">
         <mat-form-field class="example-full-width">
