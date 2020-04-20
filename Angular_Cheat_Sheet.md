@@ -26,48 +26,7 @@ ng g component edit-articles
 ```
 Those components will automatically be registered to the app.module.ts.  
 Next, open and edit `src/app/app-routing.module.ts` then add these imports.
-``` ts
-import { ArticlesComponent } from './articles/articles.component';
-import { ArticlesDetailsComponent } from './articles-details/articles-details.component';
-import { AddArticlesComponent } from './add-articles/add-articles.component';
-import { EditArticlesComponent } from './edit-articles/edit-articles.component';
-```
-Add these arrays to the existing routes constant that contain route for above-added components.  
-``` ts
-const routes: Routes = [
-  {
-    path: 'articles',
-    component: ArticlesComponent,
-    data: { title: 'List of Articles' }
-  },
-  {
-    path: 'articles-details/:id',
-    component: ArticlesDetailsComponent,
-    data: { title: 'Articles Details' }
-  },
-  {
-    path: 'add-articles',
-    component: AddArticlesComponent,
-    data: { title: 'Add Articles' }
-  },
-  {
-    path: 'edit-articles/:id',
-    component: EditArticlesComponent,
-    data: { title: 'Edit Articles' }
-  },
-  { path: '',
-    redirectTo: '/articles',
-    pathMatch: 'full'
-  }
-];
-```
-Open and edit `src/app/app.component.html` and you will see the existing router outlet.  
-Next, modify this HTML page to fit the CRUD page.
-``` ts
-<div class="container">
-    <router-outlet></router-outlet>
-</div>
-```
+
 
 ## 3. Add the Angular 9 Service <a name="Service"></a>
 All-access (POST, GET, PUT, DELETE) to the REST API will put in the Angular 9 Service.  
@@ -116,3 +75,5 @@ constructor(private http: HttpClient) { }
 ## Useful links <a name="Usefullinks"></a>
 - https://angular.io/guide/setup-local
 - https://www.djamware.com/post/5e435e84a8d0ef4300ffc5f6/angular-9-tutorial-learn-to-build-a-crud-angular-app-quickly
+- https://www.codeproject.com/Articles/5255726/Building-and-Consuming-a-REST-API-with-Angular-9-S
+- https://stackblitz.com/
