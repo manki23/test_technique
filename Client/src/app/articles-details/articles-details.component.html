@@ -1,12 +1,11 @@
 <div class="example-container mat-elevation-z8">
-    <h2>Articles Details</h2>
     <div class="example-loading-shade"
          *ngIf="isLoadingResults">
       <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
     </div>
-    <div class="button-row">
-      <a mat-flat-button color="primary" [routerLink]="['/articles']"><mat-icon>list</mat-icon></a>
-    </div>
+    <p>
+      this is the [{{articles.author}}] article.
+    </p>
     <mat-card class="example-card">
       <mat-card-header>
         <mat-card-title><h2>{{articles.title}}</h2></mat-card-title>
@@ -24,7 +23,7 @@
       </mat-card-content>
       <mat-card-actions>
         <a mat-flat-button color="primary" [routerLink]="['/edit-articles', articles._id]"><mat-icon>edit</mat-icon> Articles</a>
-        <a mat-flat-button color="warn" (click)="deleteArticles(Articles._id)"><mat-icon>delete</mat-icon> Articles</a>
+        <a mat-flat-button color="warn" (click)="deleteArticles(articles._id)"><mat-icon>delete</mat-icon> Articles</a>
       </mat-card-actions>
     </mat-card>
   </div>

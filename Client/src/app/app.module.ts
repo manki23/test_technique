@@ -10,7 +10,6 @@ import { ArticlesComponent } from './articles/articles.component';
 import { ArticlesDetailsComponent } from './articles-details/articles-details.component';
 import { AddArticlesComponent } from './add-articles/add-articles.component';
 import { EditArticlesComponent } from './edit-articles/edit-articles.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
