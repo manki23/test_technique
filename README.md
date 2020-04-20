@@ -1,5 +1,6 @@
 # Test Technique
 *Utiliser Laravel et Angular pour créer un blog*
+## Sujet
 ### Objectif
 Ce test vise à créer une liste d'articles de blog stockés dans une base de données avec la contrainte d'utilisation des frameworks suivants :
 - Angular 9
@@ -32,3 +33,9 @@ Angular doit communiquer avec la BDD grâce à une API REST développée avec La
 
 ### Bonus : créer la page de détail de l'article
 Si le temps le permet, il sera apprécié de disposer de la page de détail de l'article accessible via un lien "Voir la suite de l'article" dans la page de listing. Un autre endpoint : /articles/{id} sera alors nécessaire pour aller chercher les infos de cet article.
+
+## Téléchargement
+
+``` bash
+git clone https://github.com/manki23/test_technique ; cd test_technique
+```
